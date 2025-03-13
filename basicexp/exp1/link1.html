@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>HTML Experiment</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+      }
+      h1 {
+        color: brown;
+      }
+      h2 {
+        color: darkblue;
+      }
+      p {
+        color: goldenrod;
+        font-size: 18px;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      th,
+      td {
+        border: 2px solid black;
+        padding: 8px;
+        text-align: center;
+      }
+      th {
+        background-color: lightgray;
+      }
+      .btn-link {
+        color: blue;
+        text-decoration: underline;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Linked page</h1>
+
+    <p>click links</p>
+    <ul>
+      <li>
+        <a href="#formspace" class="btn-link"
+          >click to scroll down to see form in full
+        </a>
+      </li>
+      <li><a href="simple.html" class="btn-link">pazhaya page</a></li>
+    </ul>
+
+    <h2>Image</h2>
+    <img
+      src="htmlimg.jpeg"
+      alt="Sample Image"
+      style="width: 200px; height: auto"
+    />
+
+    <h2>Table</h2>
+    <table>
+      <tr>
+        <th>Header 1</th>
+        <th>Header 2</th>
+        <th>Header 3</th>
+      </tr>
+      <tr>
+        <td>Data 1</td>
+        <td>Data 2</td>
+        <td>Data 3</td>
+      </tr>
+      <tr>
+        <td>Data 4</td>
+        <td>Data 5</td>
+        <td>Data 6</td>
+      </tr>
+    </table>
+
+    <h2>Table</h2>
+    <table>
+      <tr>
+        <th>Header 1</th>
+        <th>Header 2</th>
+        <th>Header 3</th>
+      </tr>
+      <tr>
+        <td>Data 1</td>
+        <td>Data 2</td>
+        <td>Data 3</td>
+      </tr>
+      <tr>
+        <td>Data 4</td>
+        <td>Data 5</td>
+        <td>Data 6</td>
+      </tr>
+    </table>
+
+    <h2 id="formspace">Form</h2>
+    <form>
+      <label for="fname">First name:</label><br />
+      <input type="text" id="fname" name="fname" placeholder="vasu" /><br />
+      <label for="lname">Last name:</label><br />
+      <input type="text" id="lname" name="lname" placeholder="vidhu" />
+    </form>
+  </body>
+</html>
