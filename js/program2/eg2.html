@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Color Changer</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Arial", sans-serif;
+      }
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        transition: background 0.5s ease;
+        background: linear-gradient(to right, #ff9966, #ff5e62);
+      }
+      .clik1 {
+        text-align: center;
+      }
+      h1 {
+        font-size: 2rem;
+        color: white;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        margin-bottom: 20px;
+      }
+      .clikk {
+        background: linear-gradient(45deg, #6a11cb, #2575fc);
+        color: white;
+        font-size: 18px;
+        padding: 15px 30px;
+        border: none;
+        border-radius: 30px;
+        cursor: pointer;
+        transition: 0.3s;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      }
+      .clikk:hover {
+        background: linear-gradient(45deg, #2575fc, #6a11cb);
+        transform: scale(1.1);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="clik1">
+      <h1>Click the Button to Change Background Color</h1>
+      <button class="clikk" onclick="changeColor()">Change Color</button>
+    </div>
+
+    <script>
+      function getRandomColor() {
+        let letters = "0123456789ABCDEF";
+        let color = "#";
+        for (let i = 0; i < 6; i++) {
+          color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+      }
+
+      function changeColor() {
+        let newColor = getRandomColor();
+        document.body.style.background = newColor;
+      }
+    </script>
+  </body>
+</html>

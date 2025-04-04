@@ -1,0 +1,15 @@
+CREATE TABLE footballers (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    country VARCHAR(50) NOT NULL,
+    club VARCHAR(50) NOT NULL,
+    position VARCHAR(50) NOT NULL
+);
+
+
+INSERT INTO footballers (name, country, club, position) VALUES
+('Lionel Messi', 'Argentina', 'Inter Miami', 'Forward'),
+('Zinedine Zidane', 'France', 'Real Madrid', 'Midfielder'),
+('Ronaldinho', 'Brazil', 'FC Barcelona', 'Attacking Midfielder'),
+('Paolo Maldini', 'Italy', 'AC Milan', 'Defender'),
+('Johan Cruyff', 'Netherlands', 'Ajax', 'Forward');

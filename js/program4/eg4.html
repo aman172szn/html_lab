@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Matrix Symmetry Checker</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background-color: #f8f9fa;
+        padding: 20px;
+      }
+      .container {
+        max-width: 400px;
+        margin: auto;
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+      input,
+      button {
+        padding: 10px;
+        margin: 5px;
+        width: 100%;
+        font-size: 16px;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 15px;
+      }
+      td,
+      th {
+        border: 1px solid #ccc;
+        padding: 8px;
+        text-align: center;
+      }
+      .symmetric {
+        color: green;
+        font-weight: bold;
+      }
+      .not-symmetric {
+        color: red;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Matrix Symmetry Checker</h2>
+      <label for="rows">Enter number of rows:</label>
+      <input type="number" id="rows" min="1" placeholder="" />
+
+      <label for="cols">Enter number of columns:</label>
+      <input type="number" id="cols" min="1" placeholder="" />
+
+      <button onclick="generateMatrixInput()">
+        clickk here to enter elements
+      </button>
+
+      <div id="matrixInput"></div>
+      <button onclick="checkSymmetry()">Check</button>
+
+      <h3>Matrix:</h3>
+      <table id="matrixTable"></table>
+      <h3 id="result"></h3>
+    </div>
+
+    <script>
+      function generateMatrixInput() {
+        let rows = document.getElementById("rows").value;
+        let cols = document.getElementById("cols").value;
+        let matrixInputDiv = document.getElementById("matrixInput");
+        matrixInputDiv.innerHTML = "";
+
+        if (rows < 1 || cols < 1) {
+          alert("Please enter valid row and column values!");
+          return;
+        }
+
+        for (let i = 0; i < rows; i++) {
+          let rowDiv = document.createElement("div");
+          for (let j = 0; j < cols; j++) {
+            let input = document.createElement("input");
+            input.type = "number";
+            input.id = `cell-${i}-${j}`;
+            input.placeholder = `(${i},${j})`;
+            rowDiv.appendChild(input);
+          }
+          matrixInputDiv.appendChild(rowDiv);
+        }
+      }
+
+      function getMatrix(rows, cols) {
+        let matrix = [];
+        for (let i = 0; i < rows; i++) {
+          let row = [];
+          for (let j = 0; j < cols; j++) {
+            let value = document.getElementById(`cell-${i}-${j}`).value;
+            row.push(Number(value));
+          }
+          matrix.push(row);
+        }
+        return matrix;
+      }
+
+      function isSymmetric(matrix, rows, cols) {
+        if (rows !== cols) {
+          return false;
+        }
+        for (let i = 0; i < rows; i++) {
+          for (let j = 0; j < cols; j++) {
+            if (matrix[i][j] !== matrix[j][i]) {
+              return false;
+            }
+          }
+        }
+        return true;
+      }
+
+      function displayMatrix(matrix) {
+        let table = document.getElementById("matrixTable");
+        table.innerHTML = "";
+
+        matrix.forEach((row) => {
+          let tr = document.createElement("tr");
+          row.forEach((cell) => {
+            let td = document.createElement("td");
+            td.textContent = cell;
+            tr.appendChild(td);
+          });
+          table.appendChild(tr);
+        });
+      }
+
+      function checkSymmetry() {
+        let rows = document.getElementById("rows").value;
+        let cols = document.getElementById("cols").value;
+
+        if (rows < 1 || cols < 1) {
+          alert("Enter valid matrix dimensions!");
+          return;
+        }
+
+        let matrix = getMatrix(rows, cols);
+        displayMatrix(matrix);
+
+        let result = document.getElementById("result");
+        if (isSymmetric(matrix, rows, cols)) {
+          result.innerHTML =
+            "The matrix is <span class='symmetric'>SYMMETRIC</span> ";
+        } else {
+          result.innerHTML =
+            "The matrix is <span class='not-symmetric'>NOT SYMMETRIC</span> ";
+        }
+      }
+    </script>
+  </body>
+</html>
